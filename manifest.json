@@ -6,10 +6,19 @@
     "icons": {
       "48": "icons/border-48.png"
     },
+    "browser_action": {
+        "default_icon": "icons/border-48.png",
+        "default_title": "EnviMarker",
+        "default_popup": "src/html/marker_config.html"
+    },
+    "permissions": [
+        "activeTab",
+        "storage"
+    ],
     "content_scripts": [
       {
         "matches": ["<all_urls>"],
-        "js": ["src/marker.js"]
+        "js": ["src/js/marker.js"]
       }
     ]
   }
