@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+    "name": "EnvironmentMarker",
+    "version": "0.1",
+    "description": "Can be used to mark specific domains/environments with a banner",
+    "icons": {
+      "48": "icons/border-48.png"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["src/marker.js"]
+      }
+    ]
+  }
