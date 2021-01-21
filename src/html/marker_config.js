@@ -14,8 +14,8 @@ function deleteRow(e) {
     row.parentNode.removeChild(row)
 }
 
-function addNew() {
-    const elementHtml = getTemplate("google.fi", "In Google!", "warning")
+function addNew(domainName, message, type) {
+    const elementHtml = getTemplate(domainName, message, type)
     const element = document.createElement("div")
     element.setAttribute("class", "domain-marker-row")
     element.innerHTML = elementHtml
@@ -38,16 +38,24 @@ function getValueFromElement(element, className) {
 }
 
 function save() {
-    var stored = []
+    var stored = {markers: []}
     for(let elem of document.getElementsByClassName("domain-marker-row")) {
         const domain = getValueFromElement(elem, "domain-input")
         const message = getValueFromElement(elem, "message-input")
         const type = getValueFromElement(elem, "type-select")
         const obj = {domain: domain, message: message, type: type}
-        console.log(obj)
-        stored.push(obj)
+        stored.markers.push(obj)
     }
+    browser.storage.local.set(stored)
 }
 
-document.getElementById("add").addEventListener('click', () => addNew())
+document.getElementById("add").addEventListener('click', () => addNew("google.fi", "In Google!", "warning"))
 document.getElementById("save").addEventListener('click', () => save())
+
+browser.storage.local.get().then((res) => {
+    res.markers.forEach(element => {
+        addNew(element.domain, element.message, element.type)
+    });
+    document.getElementById("add").disabled = false
+    document.getElementById("save").disabled = false
+})
