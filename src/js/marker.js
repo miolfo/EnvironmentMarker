@@ -23,7 +23,7 @@ browser.storage.local.get().then((res) => {
     if(res.markers && (res.toggled == undefined || res.toggled === true)) {
         res.markers.forEach(element => {
             const host = window.location.hostname.replace("www.", "").toLowerCase()
-            if(!bannerAdded && host === element.domain.toLowerCase()) {
+            if(!bannerAdded && host.endsWith(element.domain.toLowerCase())) {
                 bannerAdded = true
                 addBanner(element.message, element.type)
             }
