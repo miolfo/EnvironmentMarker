@@ -4,5 +4,5 @@ Simple browser extension for marking specific environment with a banner, to avoi
 
 ## Images
 
-![Sample message](https://github.com/miolfo/envimarker/blob/master/Sample_message.png?raw=true)
-![Configuration screen](https://github.com/miolfo/envimarker/blob/master/Config_screen.png?raw=true)
+![Sample message](Sample_message.png)
+![Configuration screen](Config_screen.png)
