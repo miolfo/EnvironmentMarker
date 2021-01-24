@@ -46,11 +46,14 @@ function save() {
         const obj = {domain: domain, message: message, type: type}
         stored.markers.push(obj)
     }
+    const saveMarker = document.getElementById("toggle-on-off")
+    stored.toggled = saveMarker.checked
     browser.storage.local.set(stored)
 }
 
-document.getElementById("add").addEventListener('click', () => addNew("google.fi", "In Google!", "warning"))
-document.getElementById("save").addEventListener('click', () => save())
+document.getElementById("add-envmarker").addEventListener('click', () => addNew("google.fi", "In Google!", "warning"))
+document.getElementById("save-envmarker").addEventListener('click', () => save())
+document.getElementById("toggle-on-off").addEventListener('change', () => save())
 
 browser.storage.local.get().then((res) => {
     if(res.markers) {
@@ -58,6 +61,12 @@ browser.storage.local.get().then((res) => {
             addNew(element.domain, element.message, element.type)
         });
     }
-    document.getElementById("add").disabled = false
-    document.getElementById("save").disabled = false
+
+    //Turned on by default, so undefined also toggled as true
+    if(res.toggled == undefined || res.toggled === true) {
+        document.getElementById("toggle-on-off").checked = true
+    }
+    document.getElementById("add-envmarker").disabled = false
+    document.getElementById("save-envmarker").disabled = false
+    document.getElementById("toggle-on-off").disabled = false
 })
