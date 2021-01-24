@@ -1,7 +1,7 @@
 function getTemplate(domainName, message, type) {
-    return `<input type="text" class="domain-input" name="domain" value="${domainName}"></input>
-            <input type="text" class="message-input" name="message" value="${message}"></input>
-            <select class="type-select">
+    return `<input type="text" class="envimarker-input domain-input" name="domain" placeholder="Enter domain" value="${domainName}"></input>
+            <input type="text" class="envimarker-input message-input" placeholder="Enter message shown" name="message" value="${message}"></input>
+            <select class="envimarker-input type-select">
                 <option value="error" ${type === 'error'? 'selected="selected"' : ''}>Error</option>
                 <option value="warning" ${type === 'warning'? 'selected="selected"' : ''}>Warning</option>
                 <option value="info" ${type === 'info'? 'selected="selected"' : ''}>Info</option>
@@ -30,7 +30,7 @@ function addNew(domainName, message, type) {
 
 function getValueFromElement(element, className) {
     for(var child of element.childNodes) {
-        if(child.className === className) {
+        if(child.className !== undefined && child.className.includes(className)) {
             return child.value
         }
     }
@@ -44,7 +44,9 @@ function save() {
         const message = getValueFromElement(elem, "message-input")
         const type = getValueFromElement(elem, "type-select")
         const obj = {domain: domain, message: message, type: type}
-        stored.markers.push(obj)
+        if(domain.trim().length > 0) {
+            stored.markers.push(obj)
+        }
     }
     const saveMarker = document.getElementById("toggle-on-off")
     stored.toggled = saveMarker.checked
@@ -56,7 +58,7 @@ function save() {
     })
 }
 
-document.getElementById("add-envmarker").addEventListener('click', () => addNew("google.fi", "In Google!", "warning"))
+document.getElementById("add-envmarker").addEventListener('click', () => addNew("", "", "warning"))
 document.getElementById("save-envmarker").addEventListener('click', () => save())
 document.getElementById("toggle-on-off").addEventListener('change', () => save())
 

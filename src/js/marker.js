@@ -5,7 +5,15 @@ function addBanner(message, type) {
     if(existingBanner.length === 0) {
         const element = document.createElement("div")
         element.setAttribute("class", className)
-        element.innerText = message
+        if(message && message.trim().length > 0) {
+            element.innerText = message
+        } else if(type === "info") {
+            element.innerText = "EnviMarker Info"
+        } else if(type === "warning") {
+            element.innerText = "EnviMarker Warning"
+        } else if(type === "error") {
+            element.innerText = "EnviMarker Error"
+        }
         document.body.prepend(element)
     }
 }

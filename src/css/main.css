@@ -31,8 +31,36 @@
 
 .saved-notification {
     border: 1px solid gray;
-    border-radius: 5px;
+    border-radius: 3px;
     color: #155724;
     background-color: #d4edda;
     border-color: #c3e6cb;
+    padding: 0.5em;
+}
+
+.envimarker-input {
+    margin: 0.2em;
+    padding: 0.2em;
+    border: 1px solid gray;
+    border-radius: 3px;
+}
+
+.delete-row {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    border-radius: 3px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+}
+
+#save-envmarker, #add-envmarker {
+    margin-top: 2em;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 3px;
+    padding: 0.5em;
 }
