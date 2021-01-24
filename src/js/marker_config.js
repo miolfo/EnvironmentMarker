@@ -48,7 +48,12 @@ function save() {
     }
     const saveMarker = document.getElementById("toggle-on-off")
     stored.toggled = saveMarker.checked
-    browser.storage.local.set(stored)
+    browser.storage.local.set(stored).then(() => {
+        document.getElementById("saved-notification").hidden = false
+        setTimeout(() => {
+            document.getElementById("saved-notification").hidden = true
+        }, 2000);
+    })
 }
 
 document.getElementById("add-envmarker").addEventListener('click', () => addNew("google.fi", "In Google!", "warning"))

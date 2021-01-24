@@ -4,10 +4,10 @@
     "version": "0.1",
     "description": "Can be used to mark specific domains/environments with a banner",
     "icons": {
-      "48": "icons/border-48.png"
+      "128": "icons/warning-icon-128.png"
     },
     "browser_action": {
-        "default_icon": "icons/border-48.png",
+        "default_icon": "icons/warning-icon-128.png",
         "default_title": "EnviMarker",
         "default_popup": "src/html/marker_config.html"
     },
