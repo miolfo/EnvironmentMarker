@@ -53,9 +53,11 @@ document.getElementById("add").addEventListener('click', () => addNew("google.fi
 document.getElementById("save").addEventListener('click', () => save())
 
 browser.storage.local.get().then((res) => {
-    res.markers.forEach(element => {
-        addNew(element.domain, element.message, element.type)
-    });
+    if(res.markers) {
+        res.markers.forEach(element => {
+            addNew(element.domain, element.message, element.type)
+        });
+    }
     document.getElementById("add").disabled = false
     document.getElementById("save").disabled = false
 })

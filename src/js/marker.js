@@ -1,5 +1,5 @@
 function addBanner(message, type) {
-    const className = "envmarker-banner " + type
+    const className = "envmarker-banner envmarker-" + type
     const existingBanner = document.getElementsByClassName(className)
     //Don't add a new banner if one already exists
     if(existingBanner.length === 0) {

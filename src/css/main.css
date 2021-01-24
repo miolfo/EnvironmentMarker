@@ -1,0 +1,30 @@
+.envmarker-banner {
+    text-align: center;
+    padding: 1em;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 20em;
+    margin: 1px;
+    position: fixed;
+    top: 1em;
+    z-index: 100000;
+    right: 1em;
+}
+
+.envmarker-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.envmarker-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+.envmarker-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
